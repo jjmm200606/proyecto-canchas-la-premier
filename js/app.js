@@ -446,7 +446,7 @@ function actualizarBarraUsuario() {
 
 function cerrarSesionUsuario() {
   localStorage.removeItem("sesionActual");
-  window.location.href = "index.html";
+  window.location.href = "/canchas_web/index.html";
 }
 
 async function iniciarSesion(e) {
@@ -491,7 +491,7 @@ async function iniciarSesion(e) {
     }
 
     setTimeout(() => {
-      window.location.href = "admin.html";
+      window.location.href = "/canchas_web/admin.html";
     }, 900);
 
   } catch (error) {

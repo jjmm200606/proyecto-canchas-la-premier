@@ -81,7 +81,7 @@ function protegerAdmin() {
 
 function cerrarSesion() {
   localStorage.removeItem("sesionActual");
-  window.location.href = "login.html";
+  window.location.href = "/canchas_web/login.html";
 }
 
 function formatearFechaRegistro(fechaRegistro) {
