@@ -76,7 +76,7 @@ public class DataInitializer implements CommandLineRunner {
         cancha.ubicacion = crearUbicacion();
         cancha.contacto = crearContacto();
         cancha.horarioAtencion = crearHorarioAtencion();
-        cancha.estado = "disponible";
+        cancha.estado = "habilitada";
         cancha.fechaCreacion = new Date();
         cancha.tarifas = List.of(
                 crearTarifa("diurna", "08:00", "17:59", 50000),
@@ -94,7 +94,7 @@ public class DataInitializer implements CommandLineRunner {
         cancha.ubicacion = crearUbicacion();
         cancha.contacto = crearContacto();
         cancha.horarioAtencion = crearHorarioAtencion();
-        cancha.estado = "disponible";
+        cancha.estado = "habilitada";
         cancha.fechaCreacion = new Date();
         cancha.tarifas = List.of(
                 crearTarifa("diurna", "08:00", "17:59", 120000),
@@ -112,7 +112,7 @@ public class DataInitializer implements CommandLineRunner {
         cancha.ubicacion = crearUbicacion();
         cancha.contacto = crearContacto();
         cancha.horarioAtencion = crearHorarioAtencion();
-        cancha.estado = "disponible";
+        cancha.estado = "habilitada";
         cancha.fechaCreacion = new Date();
         cancha.tarifas = List.of(
                 crearTarifa("diurna", "08:00", "17:59", 50000),

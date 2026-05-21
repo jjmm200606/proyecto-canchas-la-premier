@@ -191,6 +191,53 @@ function guardarCanchas(canchas) {
   localStorage.setItem("canchas", JSON.stringify(canchas));
 }
 
+function obtenerCanchasBase() {
+  return [
+    {
+      id: "futbol-5-base",
+      tipo: "Fútbol 5 - Sintética",
+      nombre: "Fútbol 5 - Sintética",
+      ubicacion: "Cra. 1 #18-18, Villavicencio, Meta",
+      capacidad: 10,
+      precioAntes: 50000,
+      precioDespues: 70000,
+      descripcion: "Cancha sintética para partidos rápidos y entrenamientos.",
+      imagen: "/canchas_web/img/futbol11.png",
+      habilitada: true
+    },
+    {
+      id: "futbol-11-base",
+      tipo: "Fútbol 11 - Sintética",
+      nombre: "Fútbol 11 - Sintética",
+      ubicacion: "Cra. 1 #18-18, Villavicencio, Meta",
+      capacidad: 22,
+      precioAntes: 120000,
+      precioDespues: 140000,
+      descripcion: "Cancha sintética amplia para torneos y partidos completos.",
+      imagen: "/canchas_web/img/futbol11.png",
+      habilitada: true
+    },
+    {
+      id: "voley-base",
+      tipo: "Vóley Playa",
+      nombre: "Vóley Playa",
+      ubicacion: "Cra. 1 #18-18, Villavicencio, Meta",
+      capacidad: 12,
+      precioAntes: 50000,
+      precioDespues: 50000,
+      descripcion: "Cancha de arena ideal para recreación y competencias.",
+      imagen: "/canchas_web/img/futbol11.png",
+      habilitada: true
+    }
+  ];
+}
+
+function asegurarCanchasBase() {
+  if (obtenerCanchas().length === 0) {
+    guardarCanchas(obtenerCanchasBase());
+  }
+}
+
 async function sincronizarCanchasDesdeBackend() {
   try {
     const respuesta = await fetch(`${API_BASE}/canchas`);
@@ -204,6 +251,7 @@ async function sincronizarCanchasDesdeBackend() {
     guardarCanchas(canchasMapeadas);
   } catch (error) {
     console.error("Error sincronizando canchas:", error);
+    asegurarCanchasBase();
   }
 }
 
@@ -253,7 +301,7 @@ function mapearCanchaBackendAFrontend(cancha) {
     precioDespues,
     descripcion: cancha.descripcion || "",
     imagen: Array.isArray(cancha.imagenes) && cancha.imagenes.length > 0 ? cancha.imagenes[0] : "",
-    habilitada: String(cancha.estado || "").toLowerCase() === "habilitada"
+    habilitada: ["habilitada", "disponible"].includes(String(cancha.estado || "").toLowerCase())
   };
 }
 
