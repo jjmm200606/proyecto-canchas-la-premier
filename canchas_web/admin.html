@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrador - Cancha Sintética La Premier</title>
+  <link rel="stylesheet" href="./admin.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-contenido">
+      <div class="logo">Cancha Sintética La Premier</div>
+
+      <nav class="menu">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#contacto">Contáctanos</a>
+      </nav>
+
+      <div class="acciones-usuario">
+        <a id="linkLogin" class="btn-nav-secundario" href="login.html">Iniciar sesión</a>
+        <a id="linkRegistro" class="btn-nav-primario" href="registro.html">Crear cuenta</a>
+        <a id="linkAdmin" class="btn-nav-secundario" href="admin.html">Administrador</a>
+
+        <div id="perfilUsuario" class="perfil-demo oculto">
+          <div id="inicialUsuario" class="avatar">U</div>
+          <span id="nombreUsuario">Usuario</span>
+        </div>
+
+        <button id="btnCerrarSesion" class="btn-nav-cerrar oculto" type="button">
+          Cerrar sesión
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="contenedor" id="adminPage">
+    <section id="accesoDenegado" class="admin-warning oculto">
+      <h2>Acceso restringido</h2>
+      <p>Solo el administrador puede entrar a esta página.</p>
+      <a class="btn-nav-secundario" href="login.html">Ir a iniciar sesión</a>
+    </section>
+
+    <section id="panelAdmin" class="oculto">
+      <h1 class="seccion-titulo">Panel de administrador</h1>
+
+      <section class="bloque-admin-canchas">
+        <h2>Gestión de canchas</h2>
+        <div id="listaCanchasAdmin"></div>
+      </section>
+
+      <section class="admin-agregar-cancha">
+        <h2 id="tituloFormularioCancha">Agregar cancha</h2>
+        <form id="formAgregarCancha">
+          <input id="canchaEditandoId" type="hidden" />
+
+          <div class="campo">
+            <label for="nuevoTipoCancha">Tipo de cancha</label>
+            <select id="nuevoTipoCancha" required>
+              <option value="Fútbol 5 - Sintética">Fútbol 5 - Sintética</option>
+              <option value="Fútbol 11 - Sintética">Fútbol 11 - Sintética</option>
+              <option value="Vóley Playa">Vóley Playa</option>
+              <option value="Otro">Otro...</option>
+            </select>
+          </div>
+
+          <div class="campo oculto" id="campoTipoCanchaOtro">
+            <label for="nuevoTipoCanchaOtro">Describe el tipo de cancha</label>
+            <input id="nuevoTipoCanchaOtro" type="text" />
+          </div>
+
+          <div class="campo">
+            <label for="nuevoNombreCancha">Nombre de cancha</label>
+            <input id="nuevoNombreCancha" type="text" required />
+          </div>
+
+          <div class="campo">
+            <label for="nuevaUbicacionCancha">Ubicación</label>
+            <input id="nuevaUbicacionCancha" type="text" required />
+          </div>
+
+          <div class="campo">
+            <label for="nuevaCapacidadCancha">Capacidad</label>
+            <input id="nuevaCapacidadCancha" type="number" min="1" required />
+          </div>
+
+          <div class="campo">
+            <label for="nuevoPrecioAntesCancha">Precio antes 6:00 pm</label>
+            <input id="nuevoPrecioAntesCancha" type="number" min="1" required />
+          </div>
+
+          <div class="campo">
+            <label for="nuevoPrecioDespuesCancha">Precio después 6:00 pm</label>
+            <input id="nuevoPrecioDespuesCancha" type="number" min="1" required />
+          </div>
+
+          <div class="campo">
+            <label for="nuevaImagenCancha">Imagen de la cancha</label>
+            <input id="nuevaImagenCancha" type="file" accept="image/*" />
+            <small class="texto-ayuda-form">Si no eliges una nueva imagen, se conserva la actual.</small>
+          </div>
+
+          <div id="previewImagenCancha" class="preview-imagen-cancha oculto"></div>
+
+          <div class="acciones-form-cancha">
+            <button id="btnGuardarCancha" class="btn-form" type="submit">Agregar cancha</button>
+            <button id="btnCancelarEdicionCancha" class="btn-form btn-form-secundario oculto" type="button">Cancelar edición</button>
+          </div>
+        </form>
+        <div id="mensajeAgregarCancha" class="mensaje-form"></div>
+      </section>
+
+      <section class="admin-listar-canchas">
+        <h2>Administrar canchas</h2>
+        <div class="tabla-admin-card">
+          <table class="tabla-admin">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Nombre</th>
+                <th>Ubicación</th>
+                <th>Capacidad</th>
+                <th>Precios</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tablaCanchasAdmin"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="admin-resumen-grid">
+        <div class="admin-resumen-card">
+          <h3>Total reservas</h3>
+          <p id="totalReservasAdmin">0</p>
+        </div>
+
+        <div class="admin-resumen-card">
+          <h3>Reservadas</h3>
+          <p id="totalReservadasAdmin">0</p>
+        </div>
+
+        <div class="admin-resumen-card">
+          <h3>Confirmadas</h3>
+          <p id="totalConfirmadasAdmin">0</p>
+        </div>
+
+        <div class="admin-resumen-card">
+          <h3>Canceladas</h3>
+          <p id="totalCanceladasAdmin">0</p>
+        </div>
+      </div>
+
+      <div class="admin-herramientas">
+        <select id="filtroEstadoAdmin">
+          <option value="">Todos los estados</option>
+          <option value="Reservada">Reservada</option>
+          <option value="Confirmada">Confirmada</option>
+          <option value="Cancelada">Cancelada</option>
+          <option value="Completada">Completada</option>
+        </select>
+
+        <select id="filtroCanchaAdmin">
+          <option value="">Todas las canchas</option>
+        </select>
+
+        <button id="btnLimpiarReservasAdmin" class="btn-nav-cerrar" type="button">
+          Eliminar todas las reservas
+        </button>
+      </div>
+
+      <div class="tabla-admin-card">
+        <table class="tabla-admin">
+          <thead>
+            <tr>
+              <th>Usuario</th>
+              <th>Correo</th>
+              <th>Cancha</th>
+              <th>Fecha</th>
+              <th>Horario</th>
+              <th>Duración</th>
+              <th>Total</th>
+              <th>Estado</th>
+              <th>Registro</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tablaReservasAdmin"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="./config.js"></script>
+  <script src="./admin.js"></script>
+</body>
+</html>

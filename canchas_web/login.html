@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar sesión - Cancha Sintética La Premier</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-contenido">
+      <div class="logo">Cancha Sintética La Premier</div>
+
+      <nav class="menu">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#contacto">Contáctanos</a>
+      </nav>
+
+      <div class="acciones-usuario">
+        <a id="linkAdmin" class="btn-nav-secundario" href="admin.html">Administrador</a>
+
+        <div id="perfilUsuario" class="perfil-demo oculto">
+          <div id="inicialUsuario" class="avatar">U</div>
+          <span id="nombreUsuario">Usuario</span>
+        </div>
+
+        <button id="btnCerrarSesion" class="btn-nav-cerrar oculto" type="button">
+          Cerrar sesión
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="form-section">
+    <div class="form-card">
+      <h1>Iniciar sesión</h1>
+
+      <form id="formLogin">
+        <div class="campo">
+          <label for="loginEmail">Correo electrónico</label>
+          <input
+            type="email"
+            id="loginEmail"
+            placeholder="correo@ejemplo.com"
+            required
+          />
+        </div>
+
+        <div class="campo">
+          <label for="loginPassword">Contraseña</label>
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="********"
+            required
+          />
+        </div>
+
+        <button class="btn-form" type="submit">Ingresar</button>
+      </form>
+
+      <div id="mensajeLogin" class="mensaje-form"></div>
+
+      <div class="form-links">
+        <p>Solo el administrador puede iniciar sesión aquí.</p>
+        <p><a href="index.html">Volver al inicio</a></p>
+      </div>
+
+      <div class="ayuda-demo">
+        <p><strong>Administrador de prueba</strong></p>
+        <p>Correo: admin@lapremier.com</p>
+        <p>Contraseña: admin123</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="./config.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

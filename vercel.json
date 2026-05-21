@@ -1,0 +1,49 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/canchas_web/index.html"
+    },
+    {
+      "source": "/index.html",
+      "destination": "/canchas_web/index.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/canchas_web/login.html"
+    },
+    {
+      "source": "/login.html",
+      "destination": "/canchas_web/login.html"
+    },
+    {
+      "source": "/registro",
+      "destination": "/canchas_web/registro.html"
+    },
+    {
+      "source": "/registro.html",
+      "destination": "/canchas_web/registro.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/canchas_web/admin.html"
+    },
+    {
+      "source": "/admin.html",
+      "destination": "/canchas_web/admin.html"
+    },
+    {
+      "source": "/config.js",
+      "destination": "/canchas_web/config.js"
+    },
+    {
+      "source": "/admin.js",
+      "destination": "/canchas_web/admin.js"
+    },
+    {
+      "source": "/admin.css",
+      "destination": "/canchas_web/admin.css"
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cancha Sintética La Premier</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-contenido">
+      <div class="logo">Cancha Sintética La Premier</div>
+
+      <nav class="menu" id="menuDesktop">
+        <a href="#inicio">Inicio</a>
+        <a href="#contacto">Contáctanos</a>
+      </nav>
+
+      <button id="btnHamburger" class="hamburger" type="button" aria-label="Abrir menú">☰</button>
+      <div class="menu-movil oculto" id="menuMovil">
+        <a href="#inicio">Inicio</a>
+        <a href="#contacto">Contáctanos</a>
+        <a href="login.html">Administrador</a>
+      </div>
+
+      <div class="acciones-usuario">
+        <a id="linkLogin" class="btn-nav-secundario" href="login.html">Administrador</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="contenedor" id="inicio">
+    <section class="hero">
+      <div class="hero-texto">
+        <h1>Cancha Sintética La Premier</h1>
+        <p>Cra. 1 #18-18, Villavicencio, Meta</p>
+        <p>Tel/WhatsApp: 3124342025</p>
+      </div>
+
+      <div class="hero-etiqueta">
+        Fútbol 5 • Fútbol 11 • Vóley Playa
+      </div>
+    </section>
+
+    <section>
+      <h2 class="seccion-titulo">Nuestras canchas</h2>
+
+      <div class="grid-canchas" id="canchasGrid">
+      </div>
+    </section>
+
+    <section class="ubicacion-seccion" id="contacto">
+      <h2 class="seccion-titulo">Información y ubicación</h2>
+
+      <div class="ubicacion-grid">
+        <article class="ubicacion-card">
+          <h3>Fútbol 5 - Sintética</h3>
+          <p><strong>Dirección:</strong> Cra. 1 #18-18, Villavicencio, Meta</p>
+          <p><strong>Tel/WhatsApp:</strong> 3124342025</p>
+          <p><strong>Horario:</strong> 8:00 am a 10:00 pm</p>
+          <a
+            class="boton-mapa"
+            href="https://www.google.com/maps/search/?api=1&query=Cra.+1+%2318-18,+Villavicencio,+Meta"
+            target="_blank"
+          >
+            Ver en Google Maps
+          </a>
+        </article>
+
+        <article class="ubicacion-card">
+          <h3>Fútbol 11 - Sintética</h3>
+          <p><strong>Dirección:</strong> Cra. 1 #18-18, Villavicencio, Meta</p>
+          <p><strong>Tel/WhatsApp:</strong> 3124342025</p>
+          <p><strong>Horario:</strong> 8:00 am a 10:00 pm</p>
+          <a
+            class="boton-mapa"
+            href="https://www.google.com/maps/search/?api=1&query=Cra.+1+%2318-18,+Villavicencio,+Meta"
+            target="_blank"
+          >
+            Ver en Google Maps
+          </a>
+        </article>
+
+        <article class="ubicacion-card">
+          <h3>Vóley Playa</h3>
+          <p><strong>Dirección:</strong> Cra. 1 #18-18, Villavicencio, Meta</p>
+          <p><strong>Tel/WhatsApp:</strong> 3124342025</p>
+          <p><strong>Horario:</strong> 8:00 am a 10:00 pm</p>
+          <a
+            class="boton-mapa"
+            href="https://www.google.com/maps/search/?api=1&query=Cra.+1+%2318-18,+Villavicencio,+Meta"
+            target="_blank"
+          >
+            Ver en Google Maps
+          </a>
+        </article>
+      </div>
+
+      <div class="mapa-contenedor">
+        <iframe
+          src="https://maps.google.com/maps?q=Cra.%201%20%2318-18,%20Villavicencio,%20Meta&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          width="100%"
+          height="380"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Dirección: Cra. 1 #18-18, Villavicencio, Meta · Tel/WhatsApp: 3124342025
+    </footer>
+  </main>
+
+  <div id="overlayReserva" class="overlay-reserva oculto">
+    <div class="modal-reservas">
+      <div class="modal-header">
+        <h1>Reservar / Panel</h1>
+        <button class="btn-cerrar" onclick="cerrarModalReserva()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="reserva-grid">
+          <div class="reserva-columna">
+            <h2>Elige un horario.</h2>
+
+            <label for="canchaReserva">Cancha</label>
+            <select id="canchaReserva">
+              <option value="Fútbol 5 - Sintética">Fútbol 5 - Sintética</option>
+              <option value="Fútbol 11 - Sintética">Fútbol 11 - Sintética</option>
+              <option value="Vóley Playa">Vóley Playa</option>
+            </select>
+
+            <label for="fechaReserva">Fecha</label>
+            <input type="date" id="fechaReserva" />
+
+            <label for="duracionReserva">Duración</label>
+            <select id="duracionReserva">
+              <option value="1">1 hora</option>
+              <option value="2">2 horas</option>
+              <option value="3">3 horas</option>
+              <option value="otro">Más de 3 horas...</option>
+            </select>
+
+            <div id="campoDuracionExtra" class="campo oculto">
+              <label for="otraDuracion">Especifica cuántas horas</label>
+              <input type="number" id="otraDuracion" min="4" value="4" />
+            </div>
+
+            <label for="reservaNombre">Nombre</label>
+            <input type="text" id="reservaNombre" placeholder="Tu nombre" />
+
+            <label for="reservaEmail">Correo electrónico</label>
+            <input type="email" id="reservaEmail" placeholder="correo@ejemplo.com" />
+
+            <label for="reservaCelular">Celular</label>
+            <input type="tel" id="reservaCelular" placeholder="3121234567" />
+
+            <button
+              id="btnConsultarHorarios"
+              type="button"
+              class="btn-amarillo"
+              onclick="mostrarHorariosDisponibles()"
+            >
+              Consultar horarios
+            </button>
+
+            <p id="textoAyudaReserva" class="texto-ayuda">
+              Selecciona fecha y consulta.
+            </p>
+
+            <div id="contenedorHorarios"></div>
+            <div id="mensajeReserva"></div>
+          </div>
+
+          <div class="panel-columna oculto" id="panelReservasColumna">
+            <h2>Panel</h2>
+            <div class="panel-titulo">Mis reservas</div>
+            <div id="panelReservas">
+              <p><strong>Tus reservas.</strong></p>
+              <p>Aún no tienes reservas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./config.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>
