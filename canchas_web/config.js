@@ -1,3 +1,3 @@
 window.APP_CONFIG = {
-  API_BASE: "http://localhost:8081/api"
+  API_BASE: "https://proyecto-canchas-la-premier-api.onrender.com/api"
 };
